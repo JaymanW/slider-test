@@ -1,0 +1,12 @@
+/* GameTile */
+.game-tile {
+    border: 2px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    font-family: 'Roboto', sans-serif;
+    margin: 6px;
+    cursor: pointer;
+    user-select: none;
+}
