@@ -6,8 +6,9 @@ function GameTile(props) {
         <div
             onClick={(e) => props.tileClick(e)}
             className="game-tile"
-            data-number={props.display}
-            style={{width: `${JSON.stringify(props.width)}px`, height: `${JSON.stringify(props.height)}px`}}
+            data-index={props.index}
+            // style={{width: `${JSON.stringify(props.width)}px`, height: `${JSON.stringify(props.height)}px`}}
+            style={props.style}
         >
             {props.display}
         </div>
