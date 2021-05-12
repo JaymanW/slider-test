@@ -34,30 +34,40 @@ function GameBoard() {
     const swapLogic = (e) => {
         const emptyIndex = findEmptyIndex(board);
         const selectedTileIndex = JSON.parse(e.target.dataset.index);
-
-        console.log(`EMPTY INDEX: ${emptyIndex}`);
-        console.log(`SELECTED TILE INDEX: ${selectedTileIndex}`);
         
         if (emptyIndex === 0) {
             if (selectedTileIndex === 1 || selectedTileIndex === 3) {
                 swap(board, selectedTileIndex, emptyIndex);
             }
         } else if (emptyIndex === 1) {
-
+            if (selectedTileIndex === 0 || selectedTileIndex === 2 || selectedTileIndex === 4) {
+                swap(board, selectedTileIndex, emptyIndex);
+            }
         } else if (emptyIndex === 2) {
-            
+            if (selectedTileIndex === 1 || selectedTileIndex === 5) {
+                swap(board, selectedTileIndex, emptyIndex);
+            }
         } else if (emptyIndex === 3) {
-            
+            if (selectedTileIndex === 0 || selectedTileIndex === 4 || selectedTileIndex === 6) {
+                swap(board, selectedTileIndex, emptyIndex);
+            }
         } else if (emptyIndex === 4) {
-            
+            if (selectedTileIndex === 1 || selectedTileIndex === 3 || selectedTileIndex === 5 || selectedTileIndex === 7) {
+                swap(board, selectedTileIndex, emptyIndex);
+            }
         } else if (emptyIndex === 5) {
-            
+            if (selectedTileIndex === 2 || selectedTileIndex === 4 || selectedTileIndex === 8) {
+                swap(board, selectedTileIndex, emptyIndex);
+            }
         } else if (emptyIndex === 6) {
-            
+            if (selectedTileIndex === 3 || selectedTileIndex === 7) {
+                swap(board, selectedTileIndex, emptyIndex);
+            }
         } else if (emptyIndex === 7) {
-            
-        } 
-        
+            if (selectedTileIndex === 4 || selectedTileIndex === 6 || selectedTileIndex === 8) {
+                swap(board, selectedTileIndex, emptyIndex);
+            }
+        }
         else if (emptyIndex === 8) {
             if (selectedTileIndex === 7 || selectedTileIndex === 5) {
                 swap(board, selectedTileIndex, emptyIndex);
@@ -72,7 +82,7 @@ function GameBoard() {
         >
             {
                 board.map((tile, i) => {
-                    if (tile) {
+                    if (typeof tile === "number") {
                         return <GameTile 
                                 width={boardWidth/cols}
                                 height={boardHeight/rows}
@@ -89,7 +99,7 @@ function GameBoard() {
                                 tileClick={(e) => swapLogic(e)}
                                 key={i}
                                 index={i}
-                                style={{width: `${JSON.stringify(boardWidth/cols)}px`, height: `${JSON.stringify(boardHeight/rows)}px`}}
+                                style={{width: `${JSON.stringify(boardWidth/cols)}px`, height: `${JSON.stringify(boardHeight/rows)}px`, cursor: `auto`}}
                             />
                     }
                 })
