@@ -6,11 +6,10 @@ import GameTile from '../GameTile'
 function GameBoard() {
     const [board, setBoard] = useState([1, 2, 3, 4, 5, 6, 7, 8, ""]);
 
+    // Board Settings
     const boardWidth = 500;
     const boardHeight = 500;
-
     const margin = 6;
-
     const rows = 3;
     const cols = 3;
 
@@ -20,7 +19,7 @@ function GameBoard() {
         let temp = newArray[indexOne];
         newArray[indexOne] = newArray[indexTwo];
         newArray[indexTwo] = temp;
-        setBoard(newArray);
+        return newArray;
     }
 
     const findEmptyIndex = (array) => {
@@ -37,42 +36,95 @@ function GameBoard() {
         
         if (emptyIndex === 0) {
             if (selectedTileIndex === 1 || selectedTileIndex === 3) {
-                swap(board, selectedTileIndex, emptyIndex);
+                const newBoard = swap(board, selectedTileIndex, emptyIndex);
+                setBoard(newBoard);
             }
         } else if (emptyIndex === 1) {
             if (selectedTileIndex === 0 || selectedTileIndex === 2 || selectedTileIndex === 4) {
-                swap(board, selectedTileIndex, emptyIndex);
+                const newBoard = swap(board, selectedTileIndex, emptyIndex);
+                setBoard(newBoard);
             }
         } else if (emptyIndex === 2) {
             if (selectedTileIndex === 1 || selectedTileIndex === 5) {
-                swap(board, selectedTileIndex, emptyIndex);
+                const newBoard = swap(board, selectedTileIndex, emptyIndex);
+                setBoard(newBoard);
             }
         } else if (emptyIndex === 3) {
             if (selectedTileIndex === 0 || selectedTileIndex === 4 || selectedTileIndex === 6) {
-                swap(board, selectedTileIndex, emptyIndex);
+                const newBoard = swap(board, selectedTileIndex, emptyIndex);
+                setBoard(newBoard);
             }
         } else if (emptyIndex === 4) {
             if (selectedTileIndex === 1 || selectedTileIndex === 3 || selectedTileIndex === 5 || selectedTileIndex === 7) {
-                swap(board, selectedTileIndex, emptyIndex);
+                const newBoard = swap(board, selectedTileIndex, emptyIndex);
+                setBoard(newBoard);
             }
         } else if (emptyIndex === 5) {
             if (selectedTileIndex === 2 || selectedTileIndex === 4 || selectedTileIndex === 8) {
-                swap(board, selectedTileIndex, emptyIndex);
+                const newBoard = swap(board, selectedTileIndex, emptyIndex);
+                setBoard(newBoard);
             }
         } else if (emptyIndex === 6) {
             if (selectedTileIndex === 3 || selectedTileIndex === 7) {
-                swap(board, selectedTileIndex, emptyIndex);
+                const newBoard = swap(board, selectedTileIndex, emptyIndex);
+                setBoard(newBoard);
             }
         } else if (emptyIndex === 7) {
             if (selectedTileIndex === 4 || selectedTileIndex === 6 || selectedTileIndex === 8) {
-                swap(board, selectedTileIndex, emptyIndex);
+                const newBoard = swap(board, selectedTileIndex, emptyIndex);
+                setBoard(newBoard);
             }
         }
         else if (emptyIndex === 8) {
             if (selectedTileIndex === 7 || selectedTileIndex === 5) {
-                swap(board, selectedTileIndex, emptyIndex);
+                const newBoard = swap(board, selectedTileIndex, emptyIndex);
+                setBoard(newBoard);
             }
         }
+    }
+
+    const scramble = (array) => {
+        let tempArray = array.slice();
+        
+        const emptyIndex = findEmptyIndex(tempArray);
+        let possibleMoves = [];
+        
+        if (emptyIndex === 0) {
+            possibleMoves = [1, 3];
+        } else if (emptyIndex === 1) {
+            possibleMoves = [0, 2, 4];
+        } else if (emptyIndex === 2) {
+            possibleMoves = [1, 5];
+        } else if (emptyIndex === 3) {
+            possibleMoves = [0, 4, 6];
+        } else if (emptyIndex === 4) {
+            possibleMoves = [1, 3, 5];
+        } else if (emptyIndex === 5) {
+            possibleMoves = [2, 4, 8];
+        } else if (emptyIndex === 6) {
+            possibleMoves = [3, 7];
+        } else if (emptyIndex === 7) {
+            possibleMoves = [4, 6, 8];
+        } else if (emptyIndex === 8) {
+            possibleMoves = [7, 5];
+        }
+
+        const randomSelection = Math.floor(Math.random() * possibleMoves.length);
+        const randomMove = possibleMoves[randomSelection];
+
+        tempArray = swap(tempArray, emptyIndex, randomMove);
+        return tempArray;
+    }
+
+    const handleRandom = () => {
+        let tempArray = board.slice();
+        let numOfScrambles = 1000;
+
+        for (let i = 0; i < numOfScrambles; i++) {
+            tempArray = scramble(tempArray);
+        }
+
+        setBoard(tempArray);
     }
 
     return (
@@ -104,6 +156,7 @@ function GameBoard() {
                     }
                 })
             }
+            <button className="random-btn" onClick={handleRandom}>RANDOMIZE</button>
         </div>
     )
 }
