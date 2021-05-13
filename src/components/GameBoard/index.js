@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './style.css'
 
 import GameTile from '../GameTile'
@@ -7,15 +7,50 @@ import swap from '../../utils/swap'
 import findEmptyIndex from '../../utils/findEmptyIndex'
 
 function GameBoard() {
-    // const [board, setBoard] = useState([1, 2, 3, 4, 5, 6, 7, 8, ""]);
-    const [board, setBoard] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ""]);
+    const [board, setBoard] = useState([1, 2, 3, 4, 5, 6, 7, 8, ""]);
+    // const [board, setBoard] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ""]);
+    const [winStatus, setWinStatus] = useState("NOT WINNING");
 
     // Board Settings
     const boardWidth = 500;
     const boardHeight = 500;
     const margin = 6;
-    // const size = 3;
-    const size = 4;
+    const size = 3;
+    // const size = 4;
+
+    useEffect(() => {
+        // Size 4 Logic
+        const evalBoard = () => {
+            let solvedBoard;
+
+            if (size === 3) {
+                solvedBoard = [1, 2, 3, 4, 5, 6, 7, 8, ""];
+            } else if (size === 4) {
+                solvedBoard = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ""];
+            }
+
+            let isBoardSolved = false;
+            let incorrectCount = solvedBoard.length;
+    
+            for (let i = 0; i < solvedBoard.length; i++) {
+                if (solvedBoard[i] === board[i]) {
+                    incorrectCount--;
+    
+                    if (incorrectCount === 0) {
+                        isBoardSolved = true;
+                    }
+                }
+            }
+    
+            if (isBoardSolved === true) {
+                setWinStatus("WINNING");
+            } else {
+                setWinStatus("NOT WINNING");
+            }
+        }
+        
+        evalBoard();
+    }, [board]);
 
     // Tile Movement Logic
     const swapLogic = (e) => {
@@ -269,6 +304,7 @@ function GameBoard() {
                 })
             }
             <button className="random-btn" onClick={handleRandom}>RANDOMIZE</button>
+            <p className="win-text">Game Staus: <span>{winStatus}</span></p>
         </div>
     )
 }
