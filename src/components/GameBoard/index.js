@@ -14,7 +14,6 @@ import swapLogic from '../../utils/swapLogic'
 import scrambleLogic from '../../utils/scrambleLogic'
 
 function GameBoard() {
-    // const [board, setBoard] = useState([1, 2, 3, 4, 5, 6, 7, 8, ""]);
     const [board, setBoard] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ""]);
     const [winStatus, setWinStatus] = useState(false);
     const [gameActive, setGameActive] = useState(false);
@@ -27,20 +26,20 @@ function GameBoard() {
 
     const [size, setSize] = useState(4);
 
+    const [sizeSwap, setSizeSwap] = useState(0);
+
     // Board Settings
     const margin = 6;
 
     // Initialize Random Board & Board Size
     useEffect(() => {
         handleSize();
-        handleRandom();
         updateWindowWidth();
         window.addEventListener("resize", updateWindowWidth);
         return () => window.removeEventListener("resize", updateWindowWidth);
     }, []);
 
     useEffect(() => {
-        console.log(board)
     }, [board])
 
     useEffect(() => {
@@ -61,6 +60,10 @@ function GameBoard() {
     }, [size])
 
     useEffect(() => {
+        handleRandom();
+    }, [sizeSwap])
+
+    useEffect(() => {
         let interval;
 
         if (gameActive) {
@@ -74,10 +77,8 @@ function GameBoard() {
     }, [gameActive, timer]);
 
     useEffect(() => {
-        // Size 4 Logic
         const evalBoard = () => {
             let solvedBoard;
-
             if (size === 3) {
                 solvedBoard = [1, 2, 3, 4, 5, 6, 7, 8, ""];
             } else if (size === 4) {
@@ -108,26 +109,13 @@ function GameBoard() {
         evalBoard();
     }, [board]);
 
-    useEffect(() => {
-        handleRandom();
-    }, [setBoard])
-
     const handleSize = () => {
         if (size === 3) {
-            let tempArray = board.slice();
-            tempArray = [];
-            for (let i = 1; i <= 10; i++) {
-                if (i < 9) {
-                    tempArray.push(i);
-                } else if (i === 10) {
-                    tempArray.push("");
-                }
-            }
-            console.log(tempArray);
-            setBoard(tempArray);
+            setBoard([1, 2, 3, 4, 5, 6, 7, 8, ""])
         } else if (size === 4) {
             setBoard([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ""]);
         }
+        setSizeSwap(sizeSwap => sizeSwap + 1)
     }
 
     const updateWindowWidth = () => {
@@ -160,7 +148,6 @@ function GameBoard() {
         for (let i = 0; i < numOfScrambles; i++) {
             tempArray = scrambleLogic(tempArray, size);
         }
-
         setBoard(tempArray);
     }
 
@@ -209,8 +196,6 @@ function GameBoard() {
                     })
                 }
                 <div className="btn-cnt">
-                    {/* Render if game is active AND size === 4 */}
-                    {/* Have a disable prop and lower opacity on inactive size button */}
                     <MinusBtn btnClick={subtractSize} className="board-btn" activeStyle={size === 4 ? "size-btn" : "grayed-out"}/>
                     <RefreshBtn className="board-btn" refreshClick={handleRandom} style={{marginLeft: "1rem"}}/>
                     <AddBtn className="board-btn" btnClick={addSize} activeStyle={size === 3 ? "size-btn" : "grayed-out"}/>
