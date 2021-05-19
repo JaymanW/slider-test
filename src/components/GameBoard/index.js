@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import './style.css'
 
+// COMPONENTS
 import GameTile from '../GameTile'
-// import Timer from 'easytimer.js'
 
+// UTIL FUNCTIONS
 import swap from '../../utils/swap'
 import findEmptyIndex from '../../utils/findEmptyIndex'
 import swapLogic from '../../utils/swapLogic'
@@ -28,24 +29,18 @@ function GameBoard() {
         handleRandom();
     }, []);
 
-    const timerInterval = () => {
-        const interval = setInterval(() => {
-            setTimer(timer => timer + 1);
-        }, 1000);
-    }
-
     useEffect(() => {
         let interval;
 
         if (gameActive) {
         interval = setInterval(() => {
-            setTimer((timer) => timer + 1);
-        }, 1000);
+            let newTime = (timer + 0.1);
+            newTime = Math.round(newTime * 10) / 10;
+            setTimer(newTime);
+        }, 100);
         }
-        console.log(`TIMER: ${timer}`);
         return () => clearInterval(interval);
-        
-    }, [gameActive ,timer]);
+    }, [gameActive, timer]);
 
     useEffect(() => {
         // Size 4 Logic
@@ -97,6 +92,10 @@ function GameBoard() {
     }
 
     const handleRandom = () => {
+        // RESETS (PROBABLY MAKE THESE INTO SEPARATE FUNCTIONS LATER)
+        setTimer(0);
+        setGameActive(false);
+
         let tempArray = board.slice();
         let numOfScrambles = 150;
 
@@ -109,7 +108,7 @@ function GameBoard() {
 
     return (
         <div className="game-wrapper">
-            <p className="timer-text">00:00.0</p>
+            <p className="timer-text">{timer}</p>
             <p className="difficulty-text">Puzzle Difficulty: {size}</p>
             <div
                 className="game-board"
