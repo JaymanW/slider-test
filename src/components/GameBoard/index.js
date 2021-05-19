@@ -6,6 +6,7 @@ import GameTile from '../GameTile'
 
 import swap from '../../utils/swap'
 import findEmptyIndex from '../../utils/findEmptyIndex'
+import swapLogic from '../../utils/swapLogic'
 
 function GameBoard() {
     const [board, setBoard] = useState([1, 2, 3, 4, 5, 6, 7, 8, ""]);
@@ -80,144 +81,16 @@ function GameBoard() {
         evalBoard();
     }, [board]);
 
-    // Tile Movement Logic
-    const swapLogic = (e) => {
+    const handleMove = (e) => {
         if (winStatus === false) {
             setGameActive(true);
             const emptyIndex = findEmptyIndex(board);
             const selectedTileIndex = JSON.parse(e.target.dataset.index);
-            
-            if (size === 3) {
-                // Size 3 Logic
-                if (emptyIndex === 0) {
-                    if (selectedTileIndex === 1 || selectedTileIndex === 3) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 1) {
-                    if (selectedTileIndex === 0 || selectedTileIndex === 2 || selectedTileIndex === 4) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 2) {
-                    if (selectedTileIndex === 1 || selectedTileIndex === 5) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 3) {
-                    if (selectedTileIndex === 0 || selectedTileIndex === 4 || selectedTileIndex === 6) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 4) {
-                    if (selectedTileIndex === 1 || selectedTileIndex === 3 || selectedTileIndex === 5 || selectedTileIndex === 7) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 5) {
-                    if (selectedTileIndex === 2 || selectedTileIndex === 4 || selectedTileIndex === 8) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 6) {
-                    if (selectedTileIndex === 3 || selectedTileIndex === 7) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 7) {
-                    if (selectedTileIndex === 4 || selectedTileIndex === 6 || selectedTileIndex === 8) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 8) {
-                    if (selectedTileIndex === 7 || selectedTileIndex === 5) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                }
-            } else if (size === 4) {
-                // Size 4 Logic
-                if (emptyIndex === 0) {
-                    if (selectedTileIndex === 1 || selectedTileIndex === 4) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 1) {
-                    if (selectedTileIndex === 0 || selectedTileIndex === 2 || selectedTileIndex === 5) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 2) {
-                    if (selectedTileIndex === 1 || selectedTileIndex === 3 || selectedTileIndex === 6) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 3) {
-                    if (selectedTileIndex === 2 || selectedTileIndex === 7) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 4) {
-                    if (selectedTileIndex === 0 || selectedTileIndex === 5 || selectedTileIndex === 8) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 5) {
-                    if (selectedTileIndex === 1 || selectedTileIndex === 4 || selectedTileIndex === 6 || selectedTileIndex === 9) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 6) {
-                    if (selectedTileIndex === 2 || selectedTileIndex === 5 || selectedTileIndex === 7 || selectedTileIndex === 10) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 7) {
-                    if (selectedTileIndex === 3 || selectedTileIndex === 6 || selectedTileIndex === 11) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 8) {
-                    if (selectedTileIndex === 4 || selectedTileIndex === 9 || selectedTileIndex === 12) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 9) {
-                    if (selectedTileIndex === 5 || selectedTileIndex === 8 || selectedTileIndex === 10 || selectedTileIndex === 13) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 10) {
-                    if (selectedTileIndex === 6 || selectedTileIndex === 9 || selectedTileIndex === 11 || selectedTileIndex === 14) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 11) {
-                    if (selectedTileIndex === 7 || selectedTileIndex === 10 || selectedTileIndex === 15) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 12) {
-                    if (selectedTileIndex === 8 || selectedTileIndex === 13) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 13) {
-                    if (selectedTileIndex === 9 || selectedTileIndex === 12 || selectedTileIndex === 14) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 14) {
-                    if (selectedTileIndex === 10 || selectedTileIndex === 13 || selectedTileIndex === 15) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } else if (emptyIndex === 15) {
-                    if (selectedTileIndex === 11 || selectedTileIndex === 14) {
-                        const newBoard = swap(board, selectedTileIndex, emptyIndex);
-                        setBoard(newBoard);
-                    }
-                } 
+            let isMoveLegal = swapLogic(emptyIndex, selectedTileIndex, size);
+
+            if (isMoveLegal === true) {
+                const newBoard = swap(board, selectedTileIndex, emptyIndex);
+                setBoard(newBoard)
             }
         }
     }
@@ -313,8 +186,6 @@ function GameBoard() {
                 className="game-board"
                 style={{width: `${JSON.stringify(boardWidth + margin*size*2)}px`, height: `${JSON.stringify(boardHeight + margin*size*2)}px`}}
             >
-                {/* TIMER COMPONENT */}
-                {/* Board Size Switcher */}
                 {
                     board.map((tile, i) => {
                         if (typeof tile === "number") {
@@ -322,7 +193,7 @@ function GameBoard() {
                                     width={boardWidth/size}
                                     height={boardHeight/size}
                                     display={board[i]}
-                                    tileClick={(e) => swapLogic(e)}
+                                    tileClick={(e) => handleMove(e)}
                                     key={i}
                                     index={i}
                                     style={{width: `${JSON.stringify(boardWidth/size)}px`, height: `${JSON.stringify(boardHeight/size)}px`, backgroundColor: "#4E4E4E"}}
@@ -331,7 +202,7 @@ function GameBoard() {
                             return <GameTile 
                                     width={boardWidth/size}
                                     height={boardHeight/size}
-                                    tileClick={(e) => swapLogic(e)}
+                                    tileClick={(e) => handleMove(e)}
                                     key={i}
                                     index={i}
                                     style={{width: `${JSON.stringify(boardWidth/size)}px`, height: `${JSON.stringify(boardHeight/size)}px`, cursor: `auto`}}
