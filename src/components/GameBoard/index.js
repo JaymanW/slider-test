@@ -12,8 +12,8 @@ import swapLogic from '../../utils/swapLogic'
 import scrambleLogic from '../../utils/scrambleLogic'
 
 function GameBoard() {
-    const [board, setBoard] = useState([1, 2, 3, 4, 5, 6, 7, 8, ""]);
-    // const [board, setBoard] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ""]);
+    // const [board, setBoard] = useState([1, 2, 3, 4, 5, 6, 7, 8, ""]);
+    const [board, setBoard] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ""]);
     const [winStatus, setWinStatus] = useState(false);
     const [gameActive, setGameActive] = useState(false);
     const [timer, setTimer] = useState(0.0);
@@ -22,8 +22,8 @@ function GameBoard() {
     const boardWidth = 350;
     const boardHeight = 350;
     const margin = 6;
-    const size = 3;
-    // const size = 4;
+    // const size = 3;
+    const size = 4;
 
     // Initialize Random Board
     useEffect(() => {

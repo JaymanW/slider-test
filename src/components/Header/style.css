@@ -1,0 +1,56 @@
+.header {
+    margin: 0 auto;
+    width: 95%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Roboto", sans-serif;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo > img {
+    width: 40px;
+    margin-right: 1rem;
+}
+
+.logo > p {
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 600;
+    font-family: "Oswald", sans-serif;
+}
+
+.user-cnt {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-cnt > p {
+    color: #fff;
+    font-weight: 600;
+    margin-right: 0.75rem;
+    font-size: 1.3rem;
+    font-family: "Oswald", sans-serif;
+}
+
+.user-cnt > img {
+    width: 45px;
+    margin-right: 0.75rem;
+}
+
+.user-cnt > button {
+    background: none;
+    border: none;
+    color: #fff;
+    text-decoration: underline;
+    font-size: 1.1rem;
+    font-family: "Oswald", sans-serif;
+    cursor: pointer;
+}
