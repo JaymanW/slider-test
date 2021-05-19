@@ -2,10 +2,15 @@
     background: #4E4E4E;
     padding: 1rem;
     border-radius: 50px;
-    margin: 0 auto;
-    margin-top: 2rem;
+    /* margin: 0 auto; */
+    /* margin-top: 2rem; */
     cursor: pointer;
     user-select: none;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .refresh-icon {

@@ -4,6 +4,8 @@ import './style.css'
 // COMPONENTS
 import GameTile from '../GameTile'
 import RefreshBtn from '../RefreshBtn'
+import MinusBtn from '../MinusBtn'
+import AddBtn from '../AddBtn'
 
 // UTIL FUNCTIONS
 import swap from '../../utils/swap'
@@ -23,25 +25,25 @@ function GameBoard() {
     const [boardWidth, setBoardWidth] = useState(300);
     const [boardHeight, setBoardHeight] = useState(300);
 
+    const [size, setSize] = useState(4);
+
     // Board Settings
-    // const boardWidth = 350;
-    // const boardHeight = 350;
     const margin = 6;
-    // const size = 3;
-    const size = 4;
 
     // Initialize Random Board & Board Size
     useEffect(() => {
+        handleSize();
         handleRandom();
         updateWindowWidth();
         window.addEventListener("resize", updateWindowWidth);
-        // console.log(windowWidth)
         return () => window.removeEventListener("resize", updateWindowWidth);
     }, []);
 
     useEffect(() => {
-        console.log(windowWidth);
+        console.log(board)
+    }, [board])
 
+    useEffect(() => {
         if (windowWidth < 400) {
             setBoardWidth(250);
             setBoardHeight(250);
@@ -53,6 +55,10 @@ function GameBoard() {
             setBoardHeight(350);
         }
     }, [windowWidth])
+
+    useEffect(() => {
+        handleSize();
+    }, [size])
 
     useEffect(() => {
         let interval;
@@ -102,6 +108,28 @@ function GameBoard() {
         evalBoard();
     }, [board]);
 
+    useEffect(() => {
+        handleRandom();
+    }, [setBoard])
+
+    const handleSize = () => {
+        if (size === 3) {
+            let tempArray = board.slice();
+            tempArray = [];
+            for (let i = 1; i <= 10; i++) {
+                if (i < 9) {
+                    tempArray.push(i);
+                } else if (i === 10) {
+                    tempArray.push("");
+                }
+            }
+            console.log(tempArray);
+            setBoard(tempArray);
+        } else if (size === 4) {
+            setBoard([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ""]);
+        }
+    }
+
     const updateWindowWidth = () => {
         const width = window.innerWidth;
         setWindowWidth(width);
@@ -136,6 +164,18 @@ function GameBoard() {
         setBoard(tempArray);
     }
 
+    const subtractSize = () => {
+        if (size === 4 && gameActive === false) {
+            setSize(3);
+        }
+    }
+
+    const addSize = () => {
+        if (size === 3 && gameActive === false) {
+            setSize(4);
+        }
+    }
+
     return (
         <div className="game-wrapper">
             <p className="timer-text">{timer}</p>
@@ -168,7 +208,14 @@ function GameBoard() {
                         }
                     })
                 }
-                <RefreshBtn refreshClick={handleRandom}/>
+                <div className="btn-cnt">
+                    {/* Render if game is active AND size === 4 */}
+                    {/* Have a disable prop and lower opacity on inactive size button */}
+                    <MinusBtn btnClick={subtractSize} className="board-btn" activeStyle={size === 4 ? "size-btn" : "grayed-out"}/>
+                    <RefreshBtn className="board-btn" refreshClick={handleRandom} style={{marginLeft: "1rem"}}/>
+                    <AddBtn className="board-btn" btnClick={addSize} activeStyle={size === 3 ? "size-btn" : "grayed-out"}/>
+                </div>
+                
                 <p className="win-text">Game Staus: <span>{winStatus ? "WINNING" : "NOT WINNING"}</span></p>
             </div>
         </div>

@@ -1,0 +1,36 @@
+.size-btn {
+    background: #4E4E4E;
+    padding: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    user-select: none;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grayed-out {
+    background: rgba(78, 78, 78, 0.7);
+    padding: 1rem;
+    border-radius: 50px;
+    cursor: auto;
+    user-select: none;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.grayed-out > .add-icon {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.add-icon {
+    color: #fff;
+    font-size: 70px;
+    margin-bottom: 1px;
+    font-weight: 700;
+}
