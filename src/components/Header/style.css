@@ -1,6 +1,7 @@
 .header {
     margin: 0 auto;
     width: 95%;
+    max-width: 1000px;
     height: 10vh;
     display: flex;
     justify-content: space-between;
@@ -15,13 +16,13 @@
 }
 
 .logo > img {
-    width: 40px;
-    margin-right: 1rem;
+    width: 20px;
+    margin-right: 0.5rem;
 }
 
 .logo > p {
     color: #fff;
-    font-size: 1.3rem;
+    font-size: 0.8rem;
     font-weight: 600;
     font-family: "Oswald", sans-serif;
 }
@@ -35,14 +36,14 @@
 .user-cnt > p {
     color: #fff;
     font-weight: 600;
-    margin-right: 0.75rem;
-    font-size: 1.3rem;
+    margin-right: 0.40rem;
+    font-size: 0.8rem;
     font-family: "Oswald", sans-serif;
 }
 
 .user-cnt > img {
-    width: 45px;
-    margin-right: 0.75rem;
+    width: 20px;
+    margin-right: 0.40rem;
 }
 
 .user-cnt > button {
@@ -50,7 +51,125 @@
     border: none;
     color: #fff;
     text-decoration: underline;
-    font-size: 1.1rem;
+    font-size: 0.7rem;
     font-family: "Oswald", sans-serif;
     cursor: pointer;
+}
+
+@media only screen and (min-width: 415px) {
+    .header {
+        margin: 0 auto;
+        width: 95%;
+        height: 10vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: "Roboto", sans-serif;
+    }
+    
+    .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .logo > img {
+        width: 25px;
+        margin-right: 1rem;
+    }
+    
+    .logo > p {
+        color: #fff;
+        font-size: 1rem;
+        font-weight: 600;
+        font-family: "Oswald", sans-serif;
+    }
+    
+    .user-cnt {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .user-cnt > p {
+        color: #fff;
+        font-weight: 600;
+        margin-right: 0.75rem;
+        font-size: 1rem;
+        font-family: "Oswald", sans-serif;
+    }
+    
+    .user-cnt > img {
+        width: 25px;
+        margin-right: 0.75rem;
+    }
+    
+    .user-cnt > button {
+        background: none;
+        border: none;
+        color: #fff;
+        text-decoration: underline;
+        font-size: 0.9rem;
+        font-family: "Oswald", sans-serif;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (min-width: 550px) {
+    .header {
+        margin: 0 auto;
+        width: 95%;
+        height: 10vh;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-family: "Roboto", sans-serif;
+    }
+    
+    .logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .logo > img {
+        width: 40px;
+        margin-right: 1rem;
+    }
+    
+    .logo > p {
+        color: #fff;
+        font-size: 1.3rem;
+        font-weight: 600;
+        font-family: "Oswald", sans-serif;
+    }
+    
+    .user-cnt {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .user-cnt > p {
+        color: #fff;
+        font-weight: 600;
+        margin-right: 0.75rem;
+        font-size: 1.3rem;
+        font-family: "Oswald", sans-serif;
+    }
+    
+    .user-cnt > img {
+        width: 45px;
+        margin-right: 0.75rem;
+    }
+    
+    .user-cnt > button {
+        background: none;
+        border: none;
+        color: #fff;
+        text-decoration: underline;
+        font-size: 1.1rem;
+        font-family: "Oswald", sans-serif;
+        cursor: pointer;
+    }
 }

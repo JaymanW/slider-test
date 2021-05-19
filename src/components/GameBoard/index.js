@@ -18,17 +18,41 @@ function GameBoard() {
     const [gameActive, setGameActive] = useState(false);
     const [timer, setTimer] = useState(0.0);
 
+    const [windowWidth, setWindowWidth] = useState(null);
+
+    const [boardWidth, setBoardWidth] = useState(300);
+    const [boardHeight, setBoardHeight] = useState(300);
+
     // Board Settings
-    const boardWidth = 350;
-    const boardHeight = 350;
+    // const boardWidth = 350;
+    // const boardHeight = 350;
     const margin = 6;
     // const size = 3;
     const size = 4;
 
-    // Initialize Random Board
+    // Initialize Random Board & Board Size
     useEffect(() => {
         handleRandom();
+        updateWindowWidth();
+        window.addEventListener("resize", updateWindowWidth);
+        // console.log(windowWidth)
+        return () => window.removeEventListener("resize", updateWindowWidth);
     }, []);
+
+    useEffect(() => {
+        console.log(windowWidth);
+
+        if (windowWidth < 400) {
+            setBoardWidth(250);
+            setBoardHeight(250);
+        } else if (windowWidth <= 768) {
+            setBoardWidth(300);
+            setBoardHeight(300);
+        } else if (windowWidth > 768) {
+            setBoardWidth(350);
+            setBoardHeight(350);
+        }
+    }, [windowWidth])
 
     useEffect(() => {
         let interval;
@@ -77,6 +101,11 @@ function GameBoard() {
         
         evalBoard();
     }, [board]);
+
+    const updateWindowWidth = () => {
+        const width = window.innerWidth;
+        setWindowWidth(width);
+    }
 
     const handleMove = (e) => {
         if (winStatus === false) {
