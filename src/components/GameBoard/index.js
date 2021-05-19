@@ -3,6 +3,7 @@ import './style.css'
 
 // COMPONENTS
 import GameTile from '../GameTile'
+import RefreshBtn from '../RefreshBtn'
 
 // UTIL FUNCTIONS
 import swap from '../../utils/swap'
@@ -15,7 +16,7 @@ function GameBoard() {
     // const [board, setBoard] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ""]);
     const [winStatus, setWinStatus] = useState(false);
     const [gameActive, setGameActive] = useState(false);
-    const [timer, setTimer] = useState(0);
+    const [timer, setTimer] = useState(0.0);
 
     // Board Settings
     const boardWidth = 350;
@@ -138,7 +139,7 @@ function GameBoard() {
                         }
                     })
                 }
-                <button className="random-btn" onClick={handleRandom}>RANDOMIZE</button>
+                <RefreshBtn refreshClick={handleRandom}/>
                 <p className="win-text">Game Staus: <span>{winStatus ? "WINNING" : "NOT WINNING"}</span></p>
             </div>
         </div>

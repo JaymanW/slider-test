@@ -7,3 +7,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  background: linear-gradient(90deg, #36D1DC 0%, #5B86E5 100%);
+}

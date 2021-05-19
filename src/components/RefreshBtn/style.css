@@ -1,0 +1,13 @@
+.refresh-btn {
+    background: #4E4E4E;
+    padding: 1rem;
+    border-radius: 50px;
+    margin: 0 auto;
+    margin-top: 2rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.refresh-icon {
+    width: 40px;
+}
