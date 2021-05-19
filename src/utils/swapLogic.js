@@ -1,6 +1,3 @@
-import findEmptyIndex from './findEmptyIndex'
-import swap from './swap'
-
 // Tile Movement Logic
 const swapLogic = (emptyIndex, selectedTileIndex, size) => {
     if (size === 3) {
