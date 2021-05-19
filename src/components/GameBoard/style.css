@@ -11,3 +11,22 @@
     width: 150px;
     height: 100px;
 }
+
+.timer-text {
+    /* position: absolute;
+    top: 15px;
+    right: 35px; */
+    font-size: 3rem;
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.difficulty-text {
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+    margin-bottom: 1rem;
+    font-style: italic;
+}

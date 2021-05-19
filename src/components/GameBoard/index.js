@@ -8,18 +8,18 @@ import swap from '../../utils/swap'
 import findEmptyIndex from '../../utils/findEmptyIndex'
 
 function GameBoard() {
-    // const [board, setBoard] = useState([1, 2, 3, 4, 5, 6, 7, 8, ""]);
-    const [board, setBoard] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ""]);
+    const [board, setBoard] = useState([1, 2, 3, 4, 5, 6, 7, 8, ""]);
+    // const [board, setBoard] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ""]);
     const [winStatus, setWinStatus] = useState(false);
     const [gameActive, setGameActive] = useState(false);
     const [timer, setTimer] = useState(0);
 
     // Board Settings
-    const boardWidth = 500;
-    const boardHeight = 500;
+    const boardWidth = 350;
+    const boardHeight = 350;
     const margin = 6;
-    // const size = 3;
-    const size = 4;
+    const size = 3;
+    // const size = 4;
 
     // Initialize Random Board
     useEffect(() => {
@@ -306,38 +306,47 @@ function GameBoard() {
     }
 
     return (
-        <div
-            className="game-board"
-            style={{width: `${JSON.stringify(boardWidth + margin*size*2)}px`, height: `${JSON.stringify(boardHeight + margin*size*2)}px`}}
-        >
-            {
-                board.map((tile, i) => {
-                    if (typeof tile === "number") {
-                        return <GameTile 
-                                width={boardWidth/size}
-                                height={boardHeight/size}
-                                display={board[i]}
-                                tileClick={(e) => swapLogic(e)}
-                                key={i}
-                                index={i}
-                                style={{width: `${JSON.stringify(boardWidth/size)}px`, height: `${JSON.stringify(boardHeight/size)}px`, border: `2px solid red`}}
-                            />
-                    } else if (tile === "") {
-                        return <GameTile 
-                                width={boardWidth/size}
-                                height={boardHeight/size}
-                                tileClick={(e) => swapLogic(e)}
-                                key={i}
-                                index={i}
-                                style={{width: `${JSON.stringify(boardWidth/size)}px`, height: `${JSON.stringify(boardHeight/size)}px`, cursor: `auto`}}
-                            />
-                    }
-                })
-            }
-            <button className="random-btn" onClick={handleRandom}>RANDOMIZE</button>
-            <p className="win-text">Game Staus: <span>{winStatus ? "WINNING" : "NOT WINNING"}</span></p>
+        <div className="game-wrapper">
+            <p className="timer-text">00:00.0</p>
+            <p className="difficulty-text">Puzzle Difficulty: {size}</p>
+            <div
+                className="game-board"
+                style={{width: `${JSON.stringify(boardWidth + margin*size*2)}px`, height: `${JSON.stringify(boardHeight + margin*size*2)}px`}}
+            >
+                {/* TIMER COMPONENT */}
+                {/* Board Size Switcher */}
+                {
+                    board.map((tile, i) => {
+                        if (typeof tile === "number") {
+                            return <GameTile 
+                                    width={boardWidth/size}
+                                    height={boardHeight/size}
+                                    display={board[i]}
+                                    tileClick={(e) => swapLogic(e)}
+                                    key={i}
+                                    index={i}
+                                    style={{width: `${JSON.stringify(boardWidth/size)}px`, height: `${JSON.stringify(boardHeight/size)}px`, backgroundColor: "#4E4E4E"}}
+                                />
+                        } else if (tile === "") {
+                            return <GameTile 
+                                    width={boardWidth/size}
+                                    height={boardHeight/size}
+                                    tileClick={(e) => swapLogic(e)}
+                                    key={i}
+                                    index={i}
+                                    style={{width: `${JSON.stringify(boardWidth/size)}px`, height: `${JSON.stringify(boardHeight/size)}px`, cursor: `auto`}}
+                                />
+                        }
+                    })
+                }
+                <button className="random-btn" onClick={handleRandom}>RANDOMIZE</button>
+                <p className="win-text">Game Staus: <span>{winStatus ? "WINNING" : "NOT WINNING"}</span></p>
+            </div>
         </div>
     )
 }
 
 export default GameBoard
+
+// JWT web token authentication
+// auth0

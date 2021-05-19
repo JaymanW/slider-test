@@ -4,4 +4,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background: linear-gradient(90deg, #36D1DC 0%, #5B86E5 100%);
 }
