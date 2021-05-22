@@ -3,7 +3,7 @@ import './style.css'
 
 function LeaderboardBtn(props) {
     return (
-        <div className="leaderboard-btn" onClick={() => props.switchBoards()}>
+        <div className={props.activeStyle} onClick={() => props.switchBoards()}>
             <img src="./leaderboard.png" className="leaderboard-icon" alt="refresh puzzle"></img>
         </div>
     )

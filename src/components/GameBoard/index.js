@@ -111,7 +111,9 @@ function GameBoard(props) {
     }, [board]);
 
     const switchBoards = () => {
-        props.switchBoards();
+        if (gameActive === false) {
+            props.switchBoards();
+        }
     }
 
     const handleSize = () => {
@@ -201,10 +203,11 @@ function GameBoard(props) {
                     })
                 }
                 <div className="btn-cnt">
-                    <MinusBtn btnClick={subtractSize} className="board-btn" activeStyle={size === 4 ? "size-btn" : "grayed-out"}/>
+                    {/* <MinusBtn btnClick={subtractSize} className="board-btn" activeStyle={size === 4 ? "size-btn" : "grayed-out"}/> */}
+                    <MinusBtn btnClick={subtractSize} className="board-btn" activeStyle={gameActive ? "grayed-out" : (size === 4) ? "size-btn" : "grayed-out"}/>
                     <RefreshBtn className="board-btn" refreshClick={handleRandom} style={{marginLeft: "1rem"}}/>
-                    <LeaderboardBtn className="board-btn" switchBoards={props.switchBoards}/>
-                    <AddBtn className="board-btn" btnClick={addSize} activeStyle={size === 3 ? "size-btn" : "grayed-out"}/>
+                    <LeaderboardBtn className="board-btn" switchBoards={switchBoards} activeStyle={gameActive ? "grayed-out" : "leaderboard-btn"}/>
+                    <AddBtn className="board-btn" btnClick={addSize} activeStyle={gameActive ? "grayed-out" : (size === 3) ? "size-btn" : "grayed-out"}/>
                 </div>
                 
                 <p className="win-text">Game Staus: <span>{winStatus ? "WINNING" : "NOT WINNING"}</span></p>
