@@ -1,4 +1,4 @@
-.refresh-btn {
+.leaderboard-btn {
     background: #4E4E4E;
     padding: 1rem;
     border-radius: 50px;
@@ -11,6 +11,6 @@
     align-items: center;
 }
 
-.refresh-icon {
-    width: 40px;
+.leaderboard-icon {
+    width: 30px;
 }

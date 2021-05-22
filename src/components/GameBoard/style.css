@@ -37,9 +37,9 @@
 }
 
 .btn-cnt {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
-    margin-top: 2rem;
+    margin-top: 1rem;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -47,7 +47,7 @@
 
 @media only screen and (min-width: 415px) {
     .btn-cnt {
-        width: 80%;
+        width: 90%;
         margin: 0 auto;
         margin-top: 2rem;
         display: flex;

@@ -6,6 +6,7 @@ import GameTile from '../GameTile'
 import RefreshBtn from '../RefreshBtn'
 import MinusBtn from '../MinusBtn'
 import AddBtn from '../AddBtn'
+import LeaderboardBtn from '../LeaderboardBtn'
 
 // UTIL FUNCTIONS
 import swap from '../../utils/swap'
@@ -13,7 +14,7 @@ import findEmptyIndex from '../../utils/findEmptyIndex'
 import swapLogic from '../../utils/swapLogic'
 import scrambleLogic from '../../utils/scrambleLogic'
 
-function GameBoard() {
+function GameBoard(props) {
     const [board, setBoard] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ""]);
     const [winStatus, setWinStatus] = useState(false);
     const [gameActive, setGameActive] = useState(false);
@@ -109,6 +110,10 @@ function GameBoard() {
         evalBoard();
     }, [board]);
 
+    const switchBoards = () => {
+        props.switchBoards();
+    }
+
     const handleSize = () => {
         if (size === 3) {
             setBoard([1, 2, 3, 4, 5, 6, 7, 8, ""])
@@ -198,6 +203,7 @@ function GameBoard() {
                 <div className="btn-cnt">
                     <MinusBtn btnClick={subtractSize} className="board-btn" activeStyle={size === 4 ? "size-btn" : "grayed-out"}/>
                     <RefreshBtn className="board-btn" refreshClick={handleRandom} style={{marginLeft: "1rem"}}/>
+                    <LeaderboardBtn className="board-btn" switchBoards={props.switchBoards}/>
                     <AddBtn className="board-btn" btnClick={addSize} activeStyle={size === 3 ? "size-btn" : "grayed-out"}/>
                 </div>
                 
