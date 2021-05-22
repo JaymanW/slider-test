@@ -1,0 +1,36 @@
+.leaderboard {
+    font-family: "Roboto", sans-serif;
+    color: #fff;
+}
+
+.leaderboard-section {
+    width: 20%;
+    margin: 0 auto;
+    margin-top: 2rem;
+    text-align: left;
+}
+
+/* .leaderboard-section:nth-child(n+2) {
+    margin-top: 2rem;
+} */
+
+.leaderboard-header {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.leaderboard-scoreboard {
+    margin-left: 3rem;
+    margin-top: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+.leaderboard-scoreboard > p:nth-child(n+2){
+    margin-top: 0.5rem;
+}
+
+.score {
+    font-style: italic;
+    font-weight: 300;
+}
