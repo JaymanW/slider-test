@@ -33,14 +33,6 @@
     align-items: center;
 }
 
-.user-cnt > p {
-    color: #fff;
-    font-weight: 600;
-    margin-right: 0.40rem;
-    font-size: 0.8rem;
-    font-family: "Oswald", sans-serif;
-}
-
 .user-cnt > img {
     width: 20px;
     margin-right: 0.40rem;
@@ -89,14 +81,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-    
-    .user-cnt > p {
-        color: #fff;
-        font-weight: 600;
-        margin-right: 0.75rem;
-        font-size: 1rem;
-        font-family: "Oswald", sans-serif;
     }
     
     .user-cnt > img {
@@ -148,14 +132,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-    }
-    
-    .user-cnt > p {
-        color: #fff;
-        font-weight: 600;
-        margin-right: 0.75rem;
-        font-size: 1.3rem;
-        font-family: "Oswald", sans-serif;
     }
     
     .user-cnt > img {

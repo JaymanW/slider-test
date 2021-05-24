@@ -1,7 +1,13 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import LoginBtn from '../LoginBtn'
 import './style.css'
+import Username from '../Username'
+import LogoutBtn from '../LogoutBtn'
+import { useAuth0 } from '@auth0/auth0-react'
 
-function Header(props) {
+function Header() {
+    const { isAuthenticated } = useAuth0();
+    
     return (
         <div className="header">
             <div className="logo">
@@ -9,9 +15,9 @@ function Header(props) {
                 <p>sliderpuzzle.io</p>
             </div>
             <div className="user-cnt">
-                <p className="username">{props.username}</p>
+                <Username className="username"/>
                 <img src='./avatar.png' alt="profile avatar"/>
-                <button className="sign-out-btn">sign out</button>
+                {isAuthenticated ? <LogoutBtn className="sign-out-btn" /> : <LoginBtn className="sign-out-btn" />}
             </div>
         </div>
     )
