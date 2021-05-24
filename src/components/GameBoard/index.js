@@ -211,7 +211,7 @@ function GameBoard(props) {
                     <AddBtn className="board-btn" btnClick={addSize} activeStyle={gameActive ? "grayed-out" : (size === 3) ? "size-btn" : "grayed-out"}/>
                 </div>
                 
-                <p className="win-text">Game Staus: <span>{winStatus ? "WINNING" : "NOT WINNING"}</span></p>
+                {/* <p className="win-text">Game Staus: <span>{winStatus ? "WINNING" : "NOT WINNING"}</span></p> */}
             </div>
         </div>
     )
