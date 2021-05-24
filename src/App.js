@@ -6,7 +6,6 @@ import GameBoard from './components/GameBoard/'
 import Leaderboard from './components/Leaderboard'
 
 function App() {
-  const [username, setUsername] = useState("JaymanW");
   const [isGame, setIsGame] = useState(true);
 
   const switchBoards = () => {
@@ -19,7 +18,7 @@ function App() {
   
   return (
     <div className="App">
-      <Header username={username}/>
+      <Header />
       {isGame ? <GameBoard switchBoards={switchBoards}/> : <Leaderboard switchBoards={switchBoards} />}
     </div>
   );

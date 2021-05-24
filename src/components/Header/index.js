@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import LoginBtn from '../LoginBtn'
 import './style.css'
 import Username from '../Username'
@@ -16,7 +16,8 @@ function Header() {
             </div>
             <div className="user-cnt">
                 <Username className="username"/>
-                <img src='./avatar.png' alt="profile avatar"/>
+                {/* <img src='./avatar.png' alt="profile avatar"/> */}
+                {isAuthenticated ? <img src='./avatar.png' alt="profile avatar"/> : null}
                 {isAuthenticated ? <LogoutBtn className="sign-out-btn" /> : <LoginBtn className="sign-out-btn" />}
             </div>
         </div>

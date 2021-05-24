@@ -102,6 +102,7 @@ function GameBoard(props) {
             if (isBoardSolved === true) {
                 setWinStatus(true);
                 setGameActive(false);
+                // POST TO DATABASE IF NEW RECORD FUNCTION
             } else {
                 setWinStatus(false);
             }
