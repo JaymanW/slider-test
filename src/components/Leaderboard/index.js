@@ -12,7 +12,6 @@ function Leaderboard(props) {
         axios.get('/leaderboard3')
         .then((response) => {
             setLeaderboard3(response.data);
-            console.log(response.data)
         }).catch((err) => {
             console.log(err);
         })
@@ -20,7 +19,6 @@ function Leaderboard(props) {
         axios.get('/leaderboard4')
         .then((response) => {
             setLeaderboard4(response.data);
-            console.log(response.data)
         }).catch((err) => {
             console.log(err);
         })
@@ -62,16 +60,16 @@ function Leaderboard(props) {
                 <h2 className="leaderboard-header">4x4 Leaderboard</h2>
                 <div className="leaderboard-scoreboard">
                 {
-                        leaderboard4.map((place, i) => {
-                            if (i === 0) {
-                                return <p key={i} >🥇 {place.username} <span className="score">({place.score})</span></p>
-                            } else if (i === 1) {
-                                return <p key={i} >🥈 {place.username} <span className="score">({place.score})</span></p>
-                            } else if (i === 2) {
-                                return <p key={i} >🥉 {place.username} <span className="score">({place.score})</span></p>
-                            }
-                        })
-                    }
+                    leaderboard4.map((place, i) => {
+                        if (i === 0) {
+                            return <p key={i} >🥇 {place.username} <span className="score">({place.score})</span></p>
+                        } else if (i === 1) {
+                            return <p key={i} >🥈 {place.username} <span className="score">({place.score})</span></p>
+                        } else if (i === 2) {
+                            return <p key={i} >🥉 {place.username} <span className="score">({place.score})</span></p>
+                        }
+                    })
+                }
                 </div>
             </div>
             <ReturnBtn switchBoards={switchBoards} />

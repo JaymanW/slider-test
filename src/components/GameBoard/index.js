@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './style.css'
+import axios from 'axios'
+import { useAuth0 } from '@auth0/auth0-react'
 
 // COMPONENTS
 import GameTile from '../GameTile'
@@ -31,6 +33,8 @@ function GameBoard(props) {
 
     // Board Settings
     const margin = 6;
+
+    const { user, isAuthenticated } = useAuth0();
 
     // Initialize Random Board & Board Size
     useEffect(() => {
@@ -100,9 +104,10 @@ function GameBoard(props) {
             }
     
             if (isBoardSolved === true) {
+                postScore();
                 setWinStatus(true);
                 setGameActive(false);
-                // POST TO DATABASE IF NEW RECORD FUNCTION
+                // Function will need to take into account timer AND size of puzzle AND username
             } else {
                 setWinStatus(false);
             }
@@ -110,6 +115,26 @@ function GameBoard(props) {
         
         evalBoard();
     }, [board]);
+
+    const postScore = () => {
+        // TIMER, SIZE, USERNAME
+        if (isAuthenticated && gameActive === true) {
+            const nickname = user.nickname;
+            if (size === 3) {
+                axios.post('/leaderboard3', {
+                    username: nickname,
+                    score: timer
+                })
+            } else if (size === 4) {
+                axios.post('/leaderboard4', {
+                    username: nickname,
+                    score: timer
+                })
+            }
+            // console.log(nickname)
+            // console.log(typeof nickname)
+        }
+    }
 
     const switchBoards = () => {
         if (gameActive === false) {
