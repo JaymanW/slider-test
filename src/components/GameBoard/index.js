@@ -176,7 +176,7 @@ function GameBoard(props) {
         setGameActive(false);
 
         let tempArray = board.slice();
-        let numOfScrambles = 150;
+        let numOfScrambles = 250;
 
         for (let i = 0; i < numOfScrambles; i++) {
             tempArray = scrambleLogic(tempArray, size);
