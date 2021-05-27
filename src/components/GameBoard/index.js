@@ -121,12 +121,12 @@ function GameBoard(props) {
         if (isAuthenticated && gameActive === true) {
             const nickname = user.nickname;
             if (size === 3) {
-                axios.post('/leaderboard3', {
+                axios.post('https://frozen-journey-51858.herokuapp.com/leaderboard3', {
                     username: nickname,
                     score: timer
                 })
             } else if (size === 4) {
-                axios.post('/leaderboard4', {
+                axios.post('https://frozen-journey-51858.herokuapp.com/leaderboard4', {
                     username: nickname,
                     score: timer
                 })

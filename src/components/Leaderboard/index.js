@@ -9,14 +9,14 @@ function Leaderboard(props) {
     const [leaderboard4, setLeaderboard4] = useState([{ username: "", score: ""}, { username: "", score: ""}, { username: "", score: ""}]);
 
     useEffect(() => {
-        axios.get('/leaderboard3')
+        axios.get('https://frozen-journey-51858.herokuapp.com/leaderboard3')
         .then((response) => {
             setLeaderboard3(response.data);
         }).catch((err) => {
             console.log(err);
         })
 
-        axios.get('/leaderboard4')
+        axios.get('https://frozen-journey-51858.herokuapp.com/leaderboard4')
         .then((response) => {
             setLeaderboard4(response.data);
         }).catch((err) => {

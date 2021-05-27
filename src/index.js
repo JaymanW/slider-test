@@ -8,7 +8,7 @@ ReactDOM.render(
   <Auth0Provider
     domain="dev-2zwsp4xr.us.auth0.com"
     clientId="WUYTig5VB6jdzBg63MqMNStWBdx8ZJYA"
-    redirectUri="http://localhost:3000/"
+    redirectUri="https://sliderpuzzle.io/"
   >
     <React.StrictMode>
       <App />

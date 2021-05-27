@@ -5,7 +5,7 @@ function LogoutBtn() {
     const { logout } = useAuth0();
     
     return (
-        <button onClick={() => logout({ returnTo: "http://localhost:3000/"})} >Log Out</button>
+        <button onClick={() => logout({ returnTo: "https://sliderpuzzle.io/"})} >Log Out</button>
     )
 }
 
