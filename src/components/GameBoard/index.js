@@ -9,6 +9,7 @@ import RefreshBtn from '../RefreshBtn'
 import MinusBtn from '../MinusBtn'
 import AddBtn from '../AddBtn'
 import LeaderboardBtn from '../LeaderboardBtn'
+import GameTimer from '../GameTimer'
 
 // UTIL FUNCTIONS
 import swap from '../../utils/swap'
@@ -17,7 +18,7 @@ import swapLogic from '../../utils/swapLogic'
 import scrambleLogic from '../../utils/scrambleLogic'
 
 function GameBoard(props) {
-    const [board, setBoard] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ""]);
+    const [board, setBoard] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, "", 15]);
     const [winStatus, setWinStatus] = useState(false);
     const [gameActive, setGameActive] = useState(false);
     const [timer, setTimer] = useState(0.0);
@@ -107,7 +108,6 @@ function GameBoard(props) {
                 postScore();
                 setWinStatus(true);
                 setGameActive(false);
-                // Function will need to take into account timer AND size of puzzle AND username
             } else {
                 setWinStatus(false);
             }
@@ -144,9 +144,9 @@ function GameBoard(props) {
 
     const handleSize = () => {
         if (size === 3) {
-            setBoard([1, 2, 3, 4, 5, 6, 7, 8, ""])
+            setBoard([1, 2, 3, 4, 5, 6, 7, "", 8])
         } else if (size === 4) {
-            setBoard([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ""]);
+            setBoard([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, "", 15]);
         }
         setSizeSwap(sizeSwap => sizeSwap + 1)
     }
@@ -198,7 +198,8 @@ function GameBoard(props) {
 
     return (
         <div className="game-wrapper">
-            <p className="timer-text">{timer}</p>
+            {/* <p className="timer-text">{timer}</p> */}
+            <GameTimer timer={timer} winStatus={winStatus} gameActive={gameActive} />
             <p className="difficulty-text">Puzzle Difficulty: {size}</p>
             <div
                 className="game-board"
